@@ -23,23 +23,22 @@ char	*ft_substr(char const *s, unsigned int start, size_t len)
 		return (NULL);
 	src = (char *) s;
 	sub = (char *) malloc (len * sizeof(char));
-	i = 0;
 	if (!sub)
 		return (NULL);
+	i = 0;
 	while (i < len)
 	{
-		src[start] = sub[i];
 		printf("%u:%c ", start, src[start]);
-		start++;
-		i++;
+		sub[i++] = src[start++];
 	}
-	printf("\n"); 
-	printf("1: %s\n", sub); 
+	printf("\n");
 	sub[i] = '\0';
+	printf("1: %s\n", sub); 
 	return (sub);
 }
+
 int	main()
 {
 	char	s1[20] = "abcdefgh";
-	printf("This: %s\n", ft_substr(s1, 2, 6));
+	printf("This: %s\n", ft_substr(s1, 0, 3));
 }
