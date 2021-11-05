@@ -1,19 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strstrim.c                                      :+:      :+:    :+:   */
+/*   ft_split.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 18:38:16 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 19:33:33 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/05 20:24:03 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/05 20:37:36 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
-#include <stdio.h>
 
-char	*ft_strtrim(char const *s1, char const *set)
+char	**ft_split(char const *s, char c)
 {
-	char	*trmd;
+
 }
