@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:38:16 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/05 20:24:16 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/06 15:25:06 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,37 +14,63 @@
 #include <stdio.h>
 #include <string.h>
 
+int		ft_strlen(char *str)
+{
+	int i;
+
+	i = 0;
+	while (str[i] != '\0')
+		i++;
+	return (i);
+}
+
+char	*ft_strrev(char *str)
+{
+	int i;
+	int len;
+	char tmp;
+
+	i = 0;
+	len = ft_strlen(str) - 1;
+	while (len > i)
+	{
+		tmp = str[i];
+		str[i] = str[len];
+		str[len] = tmp;
+		i++;
+		len--;
+	}
+	return (str);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	char	*trmd;
-	unsigned long		i;
-	int		j;
-	int		k;
+	unsigned long	i;
+	unsigned long	len;
+	char			*dup;
 	
-	trmd = (char *) malloc (strlen(s1) - 2*strlen(set) + 1);
-	if (!trmd)
-		return (NULL);
 	i = 0;
-	j = 0;
-	while (s1[i + j] == set[j])
-		j++;
-	if (set[j] == '\0')
-		i = j;
-	j = 0;
 	while (s1[i])
 	{
-		k = 0;
-		while (set[k] && s1[i + k] == set[k])
-			k++;
-		if (s1[i + k] == '\0')
+		if (!strnstr(s1, set, strlen(set)))
 			break;
-		trmd[j++] = s1[i++];
+		s1 += strlen(set);
 	}
-	return (trmd);
+	len = ft_strlen(s1);
+	dup = strdup(s1);
+	ft_strrev(dup);
+	while (dup[len] == set[i])
+	{
+		len--;
+		i++;
+	}
+	printf("%s\n", dup);
+	return (dup);
 }
 
 int	main() {
-	const char	*x = "hellomotherfuckerhello";
-	const char	*set = "h";
-	printf("res: %s\n", ft_strtrim(x, set));
+	const char	s[100] = "hellohellowhateverhellohellohello";
+	const char	set[100] = "hello";
+	ft_strtrim(s, set);
+	//printf("%s\n", ft_strtrim(s, set));
 }
