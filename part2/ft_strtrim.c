@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:38:16 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/06 15:25:06 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/06 19:44:59 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include <stdio.h>
 #include <string.h>
 
-int		ft_strlen(char *str)
+int	ft_strlen(const char *str)
 {
 	int i;
 
@@ -43,34 +43,53 @@ char	*ft_strrev(char *str)
 	return (str);
 }
 
+char	*ft_strdup(const char *s)
+{
+	char	*dup;
+	int		i;
+
+	i = 0;
+	while (s[i])
+		i++;
+	dup = (char *) malloc(i + 1);
+	if (!dup)
+		return (NULL);
+	i = 0;
+	while (s[i])
+	{
+		dup[i] = s[i];
+		i++;
+	}
+	dup[i] = '\0';
+	return (dup);
+}
+
 char	*ft_strtrim(char const *s1, char const *set)
 {
 	unsigned long	i;
-	unsigned long	len;
-	char			*dup;
+	char			*dupset;
+	char			*dups1;
 	
 	i = 0;
 	while (s1[i])
 	{
-		if (!strnstr(s1, set, strlen(set)))
+		if (!strnstr(s1, set, ft_strlen(set)))
 			break;
-		s1 += strlen(set);
+		s1 += ft_strlen(set);
 	}
-	len = ft_strlen(s1);
-	dup = strdup(s1);
-	ft_strrev(dup);
-	while (dup[len] == set[i])
+	dupset =  ft_strrev(ft_strdup(set));
+	dups1 = ft_strrev(ft_strdup(s1));
+	while (dups1[i])
 	{
-		len--;
-		i++;
+		if (!strnstr(dups1, dupset, ft_strlen(dupset)))
+			break;
+		dups1 += ft_strlen(dupset);
 	}
-	printf("%s\n", dup);
-	return (dup);
+	return (ft_strrev(dups1));
 }
 
 int	main() {
 	const char	s[100] = "hellohellowhateverhellohellohello";
-	const char	set[100] = "hello";
-	ft_strtrim(s, set);
-	//printf("%s\n", ft_strtrim(s, set));
+	const char	set[10] = "hellohello";
+	printf("%s\n", ft_strtrim(s, set));
 }
