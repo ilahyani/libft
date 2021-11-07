@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/04 18:38:16 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/06 19:44:59 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/07 14:47:45 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -90,6 +90,6 @@ char	*ft_strtrim(char const *s1, char const *set)
 
 int	main() {
 	const char	s[100] = "hellohellowhateverhellohellohello";
-	const char	set[10] = "hellohello";
+	const char	set[10] = "hllhlleoeo";
 	printf("%s\n", ft_strtrim(s, set));
 }
