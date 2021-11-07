@@ -1,34 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strdup.c                                        :+:      :+:    :+:   */
+/*   ft_memchr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 15:06:07 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 08:52:19 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/03 09:28:49 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 09:09:18 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-char	*ft_strdup(const char *s)
+void	*ft_memchr(const void *s, int c, size_t n)
 {
-	char	*dup;
-	int		i;
+	const unsigned char	*p;
+	size_t				i;
 
+	p = s;
 	i = 0;
-	while (s[i])
-		i++;
-	dup = (char *) malloc(i + 1);
-	if (!dup)
-		return (NULL);
-	i = 0;
-	while (s[i])
+	while (i < n)
 	{
-		dup[i] = s[i];
+		if (*p++ == c)
+			return ((void *)(s + i));
 		i++;
 	}
-	dup[i] = '\0';
-	return (dup);
+	return (0);
 }

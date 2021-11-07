@@ -1,18 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_toupper.c                                       :+:      :+:    :+:   */
+/*   ft_strlen.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/02 10:10:40 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/02 10:21:04 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/01 12:27:39 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/07 13:00:22 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_toupper(int c)
+#include "libft.h"
+
+size_t	ft_strlen(const char *str)
 {
-	if (c >= 'a' && c <= 'z')
-		return (c - 32);
-	return (c);
+	int	i;
+
+	i = 0;
+	while (str[i])
+		i++;
+	return (i);
 }

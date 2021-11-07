@@ -1,21 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   strlen.c                                           :+:      :+:    :+:   */
+/*   ft_memcpy.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 12:27:39 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/07 13:00:22 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/02 16:55:46 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 09:00:15 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_strlen(const char *str)
+#include <string.h>
+#include "libft.h"
+
+void	*ft_memcpy(void *dest, const void *src, size_t n)
 {
-	int	i;
+	size_t				i;
+	unsigned char		*d;
+	const unsigned char	*s;
 
 	i = 0;
-	while (str[i])
+	d = (unsigned char *)dest;
+	s = (const unsigned char *)src;
+	while (i < n)
+	{
+		d[i] = s[i];
 		i++;
-	return (i);
+	}
+	d[i] = '\0';
+	return (d);
 }

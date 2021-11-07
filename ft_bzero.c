@@ -1,22 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_itoa.c                                          :+:      :+:    :+:   */
+/*   ft_bzero.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/07 17:54:23 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/07 18:08:26 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/03 09:11:30 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 09:01:24 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-char	*ft_itoa(int n)
+void	ft_bzero(void *s, size_t n)
 {
-    char    *str;
+	unsigned char	*p;
 
-    if (n == 0)
-        str = 0;
-    if 
+	p = s;
+	while (n--)
+		*p++ = '\0';
 }

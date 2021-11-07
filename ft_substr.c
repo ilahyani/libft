@@ -1,31 +1,35 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strlcpy.c                                       :+:      :+:    :+:   */
+/*   ft_substr.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 13:39:19 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 09:05:50 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/04 13:12:13 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 13:37:29 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
+#include <stdlib.h>
+#include "libft.h"
 
-size_t	ft_strlcpy(char *dst, const char *src, size_t size)
+char	*ft_substr(char const *s, unsigned int start, size_t len)
 {
+	char	*sub;
+	char	*src;
 	size_t	i;
-	size_t	j;
 
-	j = 0;
+	if (len == 0)
+		return (NULL);
+	src = (char *) s;
+	sub = (char *) malloc (len * sizeof(char));
+	if (!sub)
+		return (NULL);
 	i = 0;
-	while (src[j])
-		j++;
-	if (size != 0)
+	while (i < len)
 	{
-		while (++i < size - 1)
-			dst[i] = src[i];
-		dst[i] = '\0';
+		sub[i++] = src[start++];
 	}
-	return (j);
+	sub[i] = '\0'; 
+	return (sub);
 }

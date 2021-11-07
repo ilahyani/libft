@@ -1,45 +1,32 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strjoin.c                                       :+:      :+:    :+:   */
+/*   ft_memcmp.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/04 18:38:10 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 18:38:14 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/03 09:06:17 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 09:03:33 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include <string.h>
+#include "libft.h"
 
-int	ft_strlen(char *str)
+int	ft_memcmp(const void *s1, const void *s2, size_t n)
 {
-	int	i;
+	size_t				i;
+	const unsigned char	*x1;
+	const unsigned char	*x2;
 
+	x1 = s1;
+	x2 = s2;
 	i = 0;
-	while (str[i])
-		i++;
-	return (i);
-}
-
-char	*ft_strjoin(char const *s1, char const *s2)
-{
-	int		i;
-	int		j;
-	char	*str;
-
-	str = (char *) malloc (ft_strlen((char *)s1) + ft_strlen((char *)s2));
-	if (!str)
-		return (NULL);
-	i = 0;
-	while (s1[i])
+	if (n != 0)
 	{
-		str[i] = s1[i];
-		i++;
+		while (x1[i] && x2[i] && x1[i] == x2[i] && i < n)
+			i++;
+		return (x1[i] - x2[i]);
 	}
-	j = 0;
-	while (s2[j])
-		str[i++] = s2[j++];
-	str[i] = '\0';
-	return (str);
+	return (0);
 }

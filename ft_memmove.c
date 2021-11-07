@@ -1,32 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isalnum.c                                       :+:      :+:    :+:   */
+/*   ft_memmove.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/01 11:10:46 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/01 11:29:59 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/02 17:23:43 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 12:34:31 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-int	ft_isalpha(int x)
-{
-	if ((x >= 'a' && x <= 'z') || (x >= 'A' && x <= 'Z'))
-		return (1);
-	return (0);
-}
+#include <string.h>
+#include "libft.h"
 
-int	ft_isdigit(int x)
+void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	if (x >= '0' && x <= '9')
-		return (1);
-	return (0);
-}
+	unsigned char		*buffer;
+	unsigned char		*d;
+	size_t				i;
 
-int	ft_isalnum(int x)
-{
-	if (ft_isalpha(x) || ft_isdigit(x))
-		return (1);
-	return (0);
+	d = dest;
+	i = 0;
+	buffer = (unsigned char *) src;
+	while (i < n)
+	{
+		d[i] = buffer[i];
+		i++;
+	}
+	return (d);
 }

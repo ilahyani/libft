@@ -1,29 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_memchr.c                                        :+:      :+:    :+:   */
+/*   ft_strncmp.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/03 09:28:49 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 09:09:18 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/02 15:49:30 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/04 09:06:25 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <string.h>
+#include "libft.h"
 
-void	*ft_memchr(const void *s, int c, size_t n)
+int	ft_strncmp(const char *s1, const char *s2, size_t n)
 {
-	const unsigned char	*p;
-	size_t				i;
+	size_t	i;
 
-	p = s;
 	i = 0;
-	while (i < n)
+	if (n != 0)
 	{
-		if (*p++ == c)
-			return ((void *)(s + i));
-		i++;
+		while (s1[i] && s2[i] && s1[i] == s2[i] && i < n)
+			i++;
+		return (s1[i] - s2[i]);
 	}
 	return (0);
 }
