@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 09:06:17 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 09:03:33 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/08 14:47:06 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@ int	ft_memcmp(const void *s1, const void *s2, size_t n)
 	i = 0;
 	if (n != 0)
 	{
-		while (x1[i] && x2[i] && x1[i] == x2[i] && i < n)
+		while (x1[i] == x2[i] && i < n - 1)
 			i++;
 		return (x1[i] - x2[i]);
 	}
