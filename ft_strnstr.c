@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 11:23:14 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/04 09:08:06 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/09 12:10:35 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,6 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 {
 	size_t	i;
 	size_t	j;
-	int		x;
 	char	*b;
 	char	*l;
 
@@ -31,11 +30,10 @@ char	*ft_strnstr(const char *big, const char *little, size_t len)
 		j = 0;
 		if (b[i] == l[j])
 		{
-			x = i;
-			while (i + j < len && b[i + j] == l[j])
+			while (b[i + j] && i + j < len && b[i + j] == l[j])
 				j++;
 			if (l[j] == '\0')
-				return ((char *)(big + x));
+				return ((char *)(big + i));
 		}
 		i++;
 	}

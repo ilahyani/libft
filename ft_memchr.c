@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 09:28:49 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/08 14:39:46 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/09 11:32:10 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 
 void	*ft_memchr(const void *s, int c, size_t n)
 {
-	const char	*p;
+	const char			*p;
 	size_t				i;
 
 	p = s;
