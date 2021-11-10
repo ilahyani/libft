@@ -25,8 +25,12 @@ static char	**res(int count, char **arr, const char *s, char c)
 		while (s[j] && s[j] != c)
 			j++;
 		arr[i] = (char *) malloc (sizeof(char) * (j + 1));
+		if (!arr[i])
+		{
+			free(arr);
+			return (0);
+		}
 		ft_memcpy(arr[i], s, (j));
-		arr[i][j] = '\0';
 		s += (j + 1);
 		i++;
 	}
