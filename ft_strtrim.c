@@ -40,7 +40,7 @@ static int	backcheck(char const *s1, char const *set)
 	size_t	lens1;
 
 	l = 0;
-	lens1 = strlen(s1); //and not here
+	lens1 = ft_strlen(s1); //and not here
 	while (set[l])
 	{
 		if (set[l] == s1[lens1 - 1]) //why here
@@ -50,7 +50,6 @@ static int	backcheck(char const *s1, char const *set)
 		}
 		l++;
 	}
-	//printf("here\n");
 	return (lens1);
 }
 
@@ -60,18 +59,13 @@ char	*ft_strtrim(char const *s1, char const *set)
 	int	lens1;
 	char	*s2;
 
-	//printf("starting size:         %ld\n", strlen(s1));
 	s1 += frontcheck(s1, set);
-	//printf("size after frontcheck: %ld\n", strlen(s1));
 	lens1 = backcheck(s1, set);
-	//printf("size after backcheck:  %d\n", lens1);
 	if (lens1 < 0)
 		return ("");
 	s2 = (char *) malloc (lens1 + 1);
-	//printf("allocated memory:      %d\n", lens1 + 1);
 	if (!s2)
 		return (0);
-	//printf("here\n");
 	i = 0;
 	while (lens1--)
 	{
