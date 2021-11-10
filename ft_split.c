@@ -31,6 +31,8 @@ char	**ft_split(char const *s, char c)
 	if (*(s - 2) == c && count > 1)
 		count--;
 	arr = (char **) malloc (sizeof(char *) * (count + 1));
+	if (!arr)
+		return (0);
 	s -= len + 1;
 	return (res(count, arr, s, c));
 }
