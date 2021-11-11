@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/03 10:23:51 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/08 15:34:05 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/11 11:34:22 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@ char	*ft_strchr(const char *s, int c)
 	i = 0;
 	while (i < ft_strlen(s) + 1)
 	{
-		if (s[i] == c)
+		if (s[i] == (unsigned char)c)
 			return ((char *)(s + i));
 		i++;
 	}

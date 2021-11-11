@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:21:01 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/10 21:31:42 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/11 12:17:42 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@ static int	backcheck(char *s1, char const *set);
 
 char	*ft_strtrim(char const *s1, char const *set)
 {
-	int	i;
-	int	lens1;
+	int		i;
+	int		lens1;
 	char	*s2;
-	char *s1cpy;
+	char	*s1cpy;
 
 	if (!s1)
 		return (0);
@@ -30,7 +30,7 @@ char	*ft_strtrim(char const *s1, char const *set)
 	s1cpy += frontcheck(s1cpy, set);
 	lens1 = backcheck(s1cpy, set);
 	if (lens1 < 0)
-		return ("");
+		return (ft_strdup(""));
 	s2 = (char *) malloc (lens1 + 1);
 	if (!s2)
 		return (0);
@@ -56,7 +56,7 @@ static int	frontcheck(char *s1, char const *set)
 		if (set[i] == s1[j])
 		{
 			j++;
-			i = - 1;
+			i = -1;
 		}
 		i++;
 	}
@@ -65,7 +65,7 @@ static int	frontcheck(char *s1, char const *set)
 
 static int	backcheck(char *s1, char const *set)
 {
-	int	l;
+	int		l;
 	size_t	lens1;
 
 	l = 0;
@@ -75,7 +75,7 @@ static int	backcheck(char *s1, char const *set)
 		if (set[l] == s1[lens1 - 1])
 		{
 			lens1--;
-			l = - 1;
+			l = -1;
 		}
 		l++;
 	}

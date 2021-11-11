@@ -57,6 +57,6 @@ re:			fclean all
 
 .PHONY:		all clean fclean re
 
-so:
-	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-	gcc -nostartfiles -shared -o libft.so $(OBJS)
+#so:
+#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+#	gcc -nostartfiles -shared -o libft.so $(OBJS)
