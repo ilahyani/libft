@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/01 13:39:19 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/08 18:31:04 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/13 12:00:45 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ size_t	ft_strlcpy(char *dst, const char *src, size_t size)
 	size_t	len;
 
 	i = 0;
-	len = strlen(src);
+	len = ft_strlen(src);
 	if (size > 0)
 	{
 		while (src[i] && i < size - 1)
