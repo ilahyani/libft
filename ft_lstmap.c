@@ -1,29 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstmap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 00:28:22 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/15 18:34:58 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/16 04:24:45 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/16 05:50:35 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h" 
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+t_list	*ft_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *))
 {
-	write(fd, &c, 1);
-}
 
-#include <fcntl.h>
-
-int main()
-{
-	int fd;
-	fd = open("test.txt", O_CREAT | O_RDONLY  , S_IRUSR | S_IWUSR);
-	ft_putchar_fd('t', fd);
-	close(fd);	
 }

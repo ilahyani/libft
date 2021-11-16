@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/06 20:03:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/14 01:10:02 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/15 23:59:17 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,4 +50,5 @@ void 		ft_putchar_fd(char c, int fd);
 void 		ft_putstr_fd(char *s, int fd);
 void 		ft_putendl_fd(char *s, int fd);
 void 		ft_putnbr_fd(int n, int fd);
+
 #endif

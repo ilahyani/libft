@@ -1,29 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putchar_fd.c                                    :+:      :+:    :+:   */
+/*   ft_lstdelone.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/14 00:28:22 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/15 18:34:58 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/16 02:37:10 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/16 04:26:20 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <unistd.h>
-#include "libft.h" 
+#include "libft.h"
 
-void	ft_putchar_fd(char c, int fd)
+void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
-	write(fd, &c, 1);
-}
+	t_list	*tmp;
 
-#include <fcntl.h>
-
-int main()
-{
-	int fd;
-	fd = open("test.txt", O_CREAT | O_RDONLY  , S_IRUSR | S_IWUSR);
-	ft_putchar_fd('t', fd);
-	close(fd);	
+	tmp = lst->next;
+	(*del)(lst->content);
+	free(lst);
+	lst = tmp;
 }
