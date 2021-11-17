@@ -12,6 +12,12 @@
 
 #include <stdlib.h>
 #include "libft.h"
+#include <stdio.h>
+
+//void	del(void *vd)
+//{
+//	vd  = NULL;
+//}
 
 void	ft_lstdelone(t_list *lst, void (*del)(void *))
 {
@@ -21,4 +27,29 @@ void	ft_lstdelone(t_list *lst, void (*del)(void *))
 	(*del)(lst->content);
 	free(lst);
 	lst = tmp;
+/*	printf("\n\n");
+	while(lst)
+	{
+		printf("%s\n", lst->content);
+		lst = lst->next;
+	}*/
 }
+
+/* int main() {
+ 	t_list	*curr;
+ 	t_list	*tmp;
+ 	t_list	*head = NULL;
+ 	for (int i = 0; i < 4; i++)
+ 	{
+ 		curr = ft_lstnew((char *)"ABCD");
+ 		curr->next = head;
+ 		head = curr;
+ 	}
+ 	tmp = curr;
+ 	while(curr)
+ 	{
+ 		printf("%s\n", curr->content);
+ 		curr = curr->next;
+ 	}
+ 	ft_lstdelone(tmp, &del);
+ }*/

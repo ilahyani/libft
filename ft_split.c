@@ -6,56 +6,48 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/17 01:06:17 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/17 05:54:44 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/17 18:29:42 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
+#include <stdio.h>
 
-int		ft_count(char const *s, char c);
-
-char	**ft_fill(int count, const char *s, char c, char **tab);
-
-void	ft_free(char **tab, int j);
-
-char	**ft_split(char const *s, char c)
+static int	ft_count(char const *s, char c)
 {
-	int		count;
-	char	**tab;
-	char	*str;
+	int	i;
+	int	len;
+	int	start;
 
-	if (!s)
-		return (NULL);
-	str = ft_strtrim(s, &c);
-	count = ft_count(str, c);
-	tab = (char **) malloc ((count + 1) * sizeof(char *));
-	if (!tab)
-		return (NULL);
-	tab = ft_fill(count, str, c, tab);
-	free(str);
-	return (tab);
-}
-
-int	ft_count(char const *s, char c)
-{
-	int		count;
-	int		i;
-
-	count = 1;
 	i = 0;
-	if (ft_strlen(s) == 0)
-		return (0);
+	len = 0;
+	start = 0;
 	while (s[i])
 	{
-		if (s[i] == c && s[i + 1] != c)
-			count++;
+		if (s[i] != c)
+		{
+			if (start == 0)
+			{
+				start = 1;
+				len++;
+			}
+		}
+		else if (s[i] == c)
+			start = 0;
 		i++;
 	}
-	return (count);
+	return (len);
 }
 
-char	**ft_fill(int count, const char *s, char c, char **tab)
+static void	ft_free(char **tab, int j)
+{
+	while (j--)
+		free(tab[j]);
+	free(tab);
+}
+
+static char	**ft_fill(int count, const char *s, char c, char **tab)
 {
 	int		i;
 	int		j;
@@ -70,13 +62,12 @@ char	**ft_fill(int count, const char *s, char c, char **tab)
 		size = 0;
 		while (s[i + size] && s[i + size] != c)
 			size++;
-		tab[j] = (char *) malloc (size + 1);
+		tab[j] = ft_substr(s, i, size);
 		if (!tab[j])
 		{
 			ft_free(tab, j);
 			return (NULL);
 		}
-		ft_strlcpy(tab[j], s + i, size + 1);
 		j++;
 		i += size;
 	}
@@ -84,9 +75,17 @@ char	**ft_fill(int count, const char *s, char c, char **tab)
 	return (tab);
 }
 
-void	ft_free(char **tab, int j)
+char	**ft_split(char const *s, char c)
 {
-	while (j--)
-		free(tab[j]);
-	free(tab);
+	int		count;
+	char	**tab;
+
+	if (!s)
+		return (NULL);
+	count = ft_count(s, c);
+	tab = (char **) malloc ((count + 1) * sizeof(char *));
+	if (!tab)
+		return (NULL);
+	tab = ft_fill(count, s, c, tab);
+	return (tab);
 }

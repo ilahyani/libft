@@ -57,26 +57,21 @@ OBJS	= ${SRCS:.c=.o}
 
 NAME	= libft.a
 
-CC		= gcc
+BONUS	= bonus
 
-HEADER	= libft.h
+CC		= gcc
 
 CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
-#.c.o:
-#			${CC} ${CFLAGS} -I${INC} -c $< -o ${<:.c=.o}
-
-$(NAME):	${OBJS} $(HEADER)
+$(NAME):	${OBJS} 
 			ar rc ${NAME} ${OBJS}
-			ranlib ${NAME}
 
 all:		${NAME}
 
-$(BONUS):	$(BNS_OBJS) $(HEADER)
-			ar rc $(NAME) $(BNS_SRC)
-			ranlib $(NAME)
+$(BONUS):	$(OBJS) $(BNS_OBJS) 
+			ar rc $(NAME) $(SRCS) $(BNS_SRC)
 
 clean:
 			${RM} ${OBJS} $(BNS_OBJS)

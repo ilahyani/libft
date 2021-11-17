@@ -6,12 +6,13 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:21:01 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/11 12:17:42 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/17 18:30:08 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
+#include <stdio.h>
 
 static int	frontcheck(char *s1, char const *set);
 
