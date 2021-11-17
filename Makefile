@@ -40,8 +40,18 @@ SRCS        =   ft_isalpha.c\
 			  	ft_lstdelone.c \
 			  	ft_lstclear.c \
 			  	ft_lstiter.c \
-#			  	ft_lstmap.c
-INC		= / 
+
+BNS_SRC	=		ft_lstnew.c\
+				ft_lstadd_front.c\
+				ft_lstsize.c\
+				ft_lstlast.c\
+				ft_lstadd_back.c\
+				ft_lstdelone.c\
+				ft_lstclear.c\
+				ft_lstiter.c\
+#				ft_lstmap.c
+
+BNS_OBJS =		$(BNS_SRC:.c=.o)
 
 OBJS	= ${SRCS:.c=.o}
 
@@ -55,8 +65,8 @@ CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
-.c.o:
-			${CC} ${CFLAGS} -I${INC} -c $< -o ${<:.c=.o}
+#.c.o:
+#			${CC} ${CFLAGS} -I${INC} -c $< -o ${<:.c=.o}
 
 $(NAME):	${OBJS} $(HEADER)
 			ar rc ${NAME} ${OBJS}
@@ -64,11 +74,15 @@ $(NAME):	${OBJS} $(HEADER)
 
 all:		${NAME}
 
+$(BONUS):	$(BNS_OBJS) $(HEADER)
+			ar rc $(NAME) $(BNS_SRC)
+			ranlib $(NAME)
+
 clean:
-			${RM} ${OBJS}
+			${RM} ${OBJS} $(BNS_OBJS)
 
 fclean:		clean
-			${RM} ${NAME}
+			${RM} ${NAME} $(BNS_OBJS)
 
 re:			fclean all
 

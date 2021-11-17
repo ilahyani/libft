@@ -5,96 +5,88 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/11/06 20:03:47 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/13 16:58:43 by ilahyani         ###   ########.fr       */
+/*   Created: 2021/11/17 01:06:17 by ilahyani          #+#    #+#             */
+/*   Updated: 2021/11/17 05:54:44 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 
-static char	**res(int count, char **arr, const char *s, char c);
+int		ft_count(char const *s, char c);
+
+char	**ft_fill(int count, const char *s, char c, char **tab);
+
+void	ft_free(char **tab, int j);
 
 char	**ft_split(char const *s, char c)
 {
 	int		count;
-	char	**arr;
-	int		i;
+	char	**tab;
+	char	*str;
 
 	if (!s)
 		return (0);
-	i = 0; 
-	while (s[i] == c)
-		i++;
+	str = ft_strtrim(s, &c);
+	count = ft_count(str, c);
+	tab = (char **) malloc ((count + 1) * sizeof(char *));
+	if (!tab)
+		return (0);
+	tab = ft_fill(count, str, c, tab);
+	free(str);
+	return (tab);
+}
+
+int	ft_count(char const *s, char c)
+{
+	int		count;
+	int		i;
+
 	count = 1;
+	i = 0;
+	if (ft_strlen(s) == 0)
+		return (0);
 	while (s[i])
 	{
 		if (s[i] == c && s[i + 1] != c)
 			count++;
 		i++;
 	}
-	if (s[i - 1] == c && count > 0)
-		count--;
-	if (ft_strlen(s) == 0)
-		count = 0;
-	arr = (char **) malloc (sizeof(char *) * (count + 1));
-	if (!arr)
-		return (0);
-	return (res(count, arr, s, c));
+	return (count);
 }
 
-static char	**res(int count, char **arr, const char *s, char c)
+char	**ft_fill(int count, const char *s, char c, char **tab)
 {
-	int	i;
-	int	j;
-	int	size;
-	
+	int		i;
+	int		j;
+	size_t	size;
+
 	i = 0;
 	j = 0;
-	while (i < count)
+	while (j < count)
 	{
-		while (s[j])
-		{
-			if (s[j] == c)
-				j++;
-			else
-				break;
-		}
+		while (s[i] == c)
+			i++;
 		size = 0;
-		while (s[j] != c)
-		{
-			j++;
+		while (s[i + size] && s[i + size] != c)
 			size++;
-		}
-		arr[i] = (char *) malloc (size + 1);
-		if (!arr[i])
+		tab[j] = (char *) malloc (size + 1);
+		if (!tab[j])
 		{
-			while (i-- >= 0)
-				free(arr[i]);
-			free(arr);
-			return (NULL);
+			ft_free(tab, j);
+			return (0);
 		}
-		ft_strlcpy(arr[i], s + (j - size), size + 1);
-		i++;
+		ft_strlcpy(tab[j], s + i, size + 1);
+		j++;
+		i += size;
 	}
-	arr[i] = 0;
-	return (arr);
+	tab[j] = 0;
+	return (tab);
 }
 
-
-
-/*
-
-int main() {
-	char *s = "1-2--3---4----5-----42--";
-	char	**r = ft_split(s, '-');
-	int	i = 0;
-
-	while (r[i])
-	{
-		printf("main: arr[%d]: |%s|\n", i, r[i]);
-		i++;
-	}	
+void	ft_free(char **tab, int j)
+{
+	while (j--)
+		free(tab[j]);
+	free(tab);
 }
-
-*/

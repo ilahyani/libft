@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/15 18:14:10 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/16 02:29:14 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/16 17:23:47 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,6 @@
 #include "libft.h"
 
 /*
-typedef	struct s_list
-{
-	void			*content;
-	struct s_list	*next;
-}	t_list;
-
 #include <stdio.h>
 int	main() {
 	t_list	*head = NULL;

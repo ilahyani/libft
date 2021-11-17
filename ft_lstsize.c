@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 00:53:56 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/16 02:57:03 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/16 18:28:47 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 int	ft_lstsize(t_list *lst)
 {
-	int	i;
-	t_list	tmp;
+	int		i;
+	t_list	*tmp;
 
 	tmp = lst;
 	i = 0;
