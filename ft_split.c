@@ -26,12 +26,12 @@ char	**ft_split(char const *s, char c)
 	char	*str;
 
 	if (!s)
-		return (0);
+		return (NULL);
 	str = ft_strtrim(s, &c);
 	count = ft_count(str, c);
 	tab = (char **) malloc ((count + 1) * sizeof(char *));
 	if (!tab)
-		return (0);
+		return (NULL);
 	tab = ft_fill(count, str, c, tab);
 	free(str);
 	return (tab);
@@ -74,7 +74,7 @@ char	**ft_fill(int count, const char *s, char c, char **tab)
 		if (!tab[j])
 		{
 			ft_free(tab, j);
-			return (0);
+			return (NULL);
 		}
 		ft_strlcpy(tab[j], s + i, size + 1);
 		j++;
