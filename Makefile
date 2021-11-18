@@ -40,6 +40,7 @@ SRCS        =   ft_isalpha.c\
 			  	ft_lstdelone.c \
 			  	ft_lstclear.c \
 			  	ft_lstiter.c \
+				ft_lstmap.c\
 
 BNS_SRC	=		ft_lstnew.c\
 				ft_lstadd_front.c\
@@ -49,7 +50,7 @@ BNS_SRC	=		ft_lstnew.c\
 				ft_lstdelone.c\
 				ft_lstclear.c\
 				ft_lstiter.c\
-#				ft_lstmap.c
+				ft_lstmap.c\
 
 BNS_OBJS =		$(BNS_SRC:.c=.o)
 
@@ -58,10 +59,6 @@ OBJS	= ${SRCS:.c=.o}
 NAME	= libft.a
 
 BONUS	= bonus
-
-CC		= gcc
-
-CFLAGS	= -Wall -Wextra -Werror
 
 RM		= rm -f
 
@@ -81,8 +78,8 @@ fclean:		clean
 
 re:			fclean all
 
-.PHONY:		all clean fclean re
+.PHONY:		all clean fclean re bonus
 
-#so:
-#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-#	gcc -nostartfiles -shared -o libft.so $(OBJS)
+so:
+	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
+	gcc -nostartfiles -shared -o libft.so $(OBJS)
