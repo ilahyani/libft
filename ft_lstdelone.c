@@ -6,13 +6,13 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 02:37:10 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/16 23:50:49 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/18 14:35:36 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
-#include <stdio.h>
+//#include <stdio.h>
 
 //void	del(void *vd)
 //{

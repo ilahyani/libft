@@ -6,20 +6,17 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/16 02:36:02 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/17 18:27:29 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/18 15:12:50 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include "ft_lstlast.c"
-//#include "ft_lstnew.c"
-//#include <stdio.h>
 
 void	ft_lstadd_back(t_list **lst, t_list *new)
 {
 	t_list	*last;
 
-	if (!lst || !new)
+	if (!new)
 		return ;
 	if (!*lst)
 	{
@@ -28,22 +25,36 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	}
 	last = ft_lstlast(*lst);
 	last->next = new;
-	new->next = NULL;
 }
 
-/*
-int	main() {
-	t_list *tmp, *new = NULL, *last, *head = NULL;
+// int main() {
+// 	t_list *tmp = NULL;
+// 	t_list *new = NULL;
 
-	for (int i = 0; i < 5; i++)
-	{
-		tmp = ft_lstnew((char *) "whtvr");
-		tmp->next = head;
-		head = tmp;
-	}
-	head = NULL;
-	new = ft_lstnew((char *)"akhir wa7ed");
-	ft_lstadd_back(&head, new);
-	last = ft_lstlast(head);
-	printf("%s\n", last->content);
-}*/
+// 	new = ft_lstnew((char*) "hello");
+// 	printf("%s\n",new->content);
+// 	ft_lstadd_back(&tmp,new);
+// 	printf("%s\n",tmp->content);
+// }
+
+// int main()
+// {
+// 	t_list * l =  NULL; t_list * l2 =  NULL; 
+// 	ft_lstadd_back(&l, ft_lstnew((char*)"1"));
+// 	/* 1 */ printf("%s\n",l->content);
+// 	///* 2 */ printf("%s\n",l->next);
+// 	printf("\n");
+// 	ft_lstadd_back(&l, ft_lstnew((char*)"2"));
+// 	/* 3 */ printf("%s\n",l->content);
+// 	/* 4 */ printf("%s\n",l->next->content );
+// 	///* 5 */ printf("%s\n",l->next->next);
+// 	printf("\n");
+// 	ft_lstadd_back(&l2, ft_lstnew((char*)"3"));
+// 	ft_lstadd_back(&l2, ft_lstnew((char*)"4"));
+// 	ft_lstadd_back(&l, l2);
+// 	/* 6 */ printf("%s\n",l->content);
+// 	/* 7 */ printf("%s\n",l->next->content );
+// 	/* 8 */ printf("%s\n",l->next->next->content);
+// 	/* 9 */ printf("%s\n",l->next->next->next->content);
+// 	// /* 10 */ printf("%s\n",l->next->next->next->next);
+//  }

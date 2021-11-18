@@ -13,6 +13,13 @@
 #include <stdlib.h>
 #include "libft.h"
 
+void	*del(void *vd)
+{
+	vd  = NULL;
+	return(0);
+}
+
+ 
 void	ft_lstclear(t_list **lst, void (*del)(void *))
 {
 	t_list	*tmp;
@@ -30,7 +37,29 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 	}
 	*lst = NULL;
 }
-/*
+
+#include<stdio.h>
+int main()
+{
+	t_list *l =  NULL; 
+	t_list *l2 =  NULL; 
+	
+	ft_lstadd_back(&l, ft_lstnew((char*)"1"));
+	ft_lstadd_back(&l, ft_lstnew((char*)"2"));
+	ft_lstadd_back(&l2, ft_lstnew((char*)"3"));
+	ft_lstadd_back(&l2, ft_lstnew((char*)"4"));
+	ft_lstadd_back(&l, l2);
+	while (ft_strncmp(l->content, "3", 1))
+		l = l->next;
+	ft_lstclear(&l, (*del)(l->content));
+	while (l)
+	{
+		printf("%s\n", l->content);
+		l = l->next;
+	}
+ }
+
+ /*
 int    main() {
     t_list *tmp, *new = NULL, *last, *head = NULL;
 

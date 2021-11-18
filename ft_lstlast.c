@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "libft.h"
-//#include "ft_lstnew.c"
 
 t_list	*ft_lstlast(t_list *lst)
 {
