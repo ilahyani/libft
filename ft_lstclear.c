@@ -12,11 +12,11 @@
 
 #include <stdlib.h>
 #include "libft.h"
+#include<stdio.h>
 
-void	*del(void *vd)
+void	del(void *vd)
 {
-	vd  = NULL;
-	return(0);
+	free(vd);
 }
 
  
@@ -27,35 +27,43 @@ void	ft_lstclear(t_list **lst, void (*del)(void *))
 
 	if (!del || !*lst)
 		return ;
-	tmp = (*lst);
+	tmp = *lst;
 	while (tmp)
 	{
-		tmp2 = tmp->next;
-		(*del)(tmp->content);
+		tmp2 = (tmp)->next;
+		(*del)((tmp)->content);
 		free(tmp);
+		tmp = NULL;
 		tmp = tmp2;
 	}
 	*lst = NULL;
 }
 
-#include<stdio.h>
 int main()
 {
 	t_list *l =  NULL; 
 	t_list *l2 =  NULL; 
 	
-	ft_lstadd_back(&l, ft_lstnew((char*)"1"));
-	ft_lstadd_back(&l, ft_lstnew((char*)"2"));
-	ft_lstadd_back(&l2, ft_lstnew((char*)"3"));
-	ft_lstadd_back(&l2, ft_lstnew((char*)"4"));
+	ft_lstadd_back(&l, ft_lstnew((char*)ft_strdup("1")));
+	ft_lstadd_back(&l, ft_lstnew((char*)ft_strdup("2")));
+	ft_lstadd_back(&l2, ft_lstnew((char*)ft_strdup("3")));
+	ft_lstadd_back(&l2, ft_lstnew((char*)ft_strdup("4")));
 	ft_lstadd_back(&l, l2);
-	while (ft_strncmp(l->content, "3", 1))
-		l = l->next;
-	ft_lstclear(&l, (*del)(l->content));
-	while (l)
+	t_list *tmp = l;
+	// while (ft_strncmp(l->content, "2", 1))
+	// {
+	// 	printf("-> %s\n", l->content);
+	// 	l = l->next;
+	// }
+	ft_lstclear(&(l->next), &del);
+	// tmp->next = NULL;
+	// printf(">> %s\n", tmp->content);
+	// if (tmp->next)
+	// 	printf(">> %s\n", tmp->next->content);
+	while (tmp)
 	{
-		printf("%s\n", l->content);
-		l = l->next;
+		printf("---> %s\n", tmp->content);
+		tmp = tmp->next;
 	}
  }
 

@@ -1,3 +1,15 @@
+# **************************************************************************** #
+#                                                                              #
+#                                                         :::      ::::::::    #
+#    Makefile                                           :+:      :+:    :+:    #
+#                                                     +:+ +:+         +:+      #
+#    By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+         #
+#                                                 +#+#+#+#+#+   +#+            #
+#    Created: 2021/11/18 19:14:43 by ilahyani          #+#    #+#              #
+#    Updated: 2021/11/18 19:14:45 by ilahyani         ###   ########.fr        #
+#                                                                              #
+# **************************************************************************** #
+
 SRCS        =   ft_isalpha.c\
                 ft_isdigit.c\
                 ft_isalnum.c\
@@ -31,18 +43,9 @@ SRCS        =   ft_isalpha.c\
 				ft_putchar_fd.c\
 				ft_putstr_fd.c\
 				ft_putendl_fd.c\
-				ft_putnbr_fd.c\
-				ft_lstnew.c \
-			  	ft_lstadd_front.c \
-			  	ft_lstsize.c \
-			  	ft_lstlast.c \
-			  	ft_lstadd_back.c \
-			  	ft_lstdelone.c \
-			  	ft_lstclear.c \
-			  	ft_lstiter.c \
-				ft_lstmap.c\
+				ft_putnbr_fd.c
 
-BNS_SRC	=		ft_lstnew.c\
+BNS_SRC		=	ft_lstnew.c\
 				ft_lstadd_front.c\
 				ft_lstsize.c\
 				ft_lstlast.c\
@@ -50,35 +53,39 @@ BNS_SRC	=		ft_lstnew.c\
 				ft_lstdelone.c\
 				ft_lstclear.c\
 				ft_lstiter.c\
-				ft_lstmap.c\
+				ft_lstmap.c
 
-BNS_OBJS =		$(BNS_SRC:.c=.o)
+BNS_OBJS 	=	$(BNS_SRC:.c=.o)
 
-OBJS	= ${SRCS:.c=.o}
+OBJS		= 	$(SRCS:.c=.o)
 
-NAME	= libft.a
+NAME		= 	libft.a
 
-BONUS	= bonus
+CC 			=	gcc
 
-RM		= rm -f
+CFLAGS		= 	-Wall -Wextra -Werror
 
-$(NAME):	${OBJS} 
-			ar rc ${NAME} ${OBJS}
+BONUS		= 	bonus
+
+RM			= 	rm -f
+
+$(NAME):	$(OBJS)
+			ar rcs $(NAME) $(OBJS)
 
 all:		${NAME}
 
 $(BONUS):	$(OBJS) $(BNS_OBJS) 
-			ar rc $(NAME) $(SRCS) $(BNS_SRC)
+			ar rcs $(NAME) $(OBJS) $(BNS_OBJS)
 
 clean:
-			${RM} ${OBJS} $(BNS_OBJS)
+			$(RM) $(OBJS) $(BNS_OBJS)
 
 fclean:		clean
-			${RM} ${NAME} $(BNS_OBJS)
+			$(RM) $(NAME)
 
 re:			fclean all
 
-.PHONY:		all clean re
+.PHONY:		all clean re fclean
 
 #so:
 #	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
