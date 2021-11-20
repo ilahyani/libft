@@ -6,7 +6,7 @@
 #    By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 19:14:43 by ilahyani          #+#    #+#              #
-#    Updated: 2021/11/18 19:14:45 by ilahyani         ###   ########.fr        #
+#    Updated: 2021/11/20 12:19:42 by ilahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,7 +43,8 @@ SRCS        =   ft_isalpha.c\
 				ft_putchar_fd.c\
 				ft_putstr_fd.c\
 				ft_putendl_fd.c\
-				ft_putnbr_fd.c
+				ft_putnbr_fd.c\
+                ft_lstdelone.c
 
 BNS_SRC		=	ft_lstnew.c\
 				ft_lstadd_front.c\
@@ -70,12 +71,14 @@ BONUS		= 	bonus
 RM			= 	rm -f
 
 $(NAME):	$(OBJS)
-			ar rcs $(NAME) $(OBJS)
+			ar rc $(NAME) $(OBJS)
+			ranlib ${NAME}
 
 all:		${NAME}
 
 $(BONUS):	$(OBJS) $(BNS_OBJS) 
 			ar rcs $(NAME) $(OBJS) $(BNS_OBJS)
+			ranlib ${NAME}
 
 clean:
 			$(RM) $(OBJS) $(BNS_OBJS)
@@ -86,7 +89,3 @@ fclean:		clean
 re:			fclean all
 
 .PHONY:		all clean re fclean
-
-#so:
-#	$(CC) -nostartfiles -fPIC $(CFLAGS) $(SRCS)
-#	gcc -nostartfiles -shared -o libft.so $(OBJS)

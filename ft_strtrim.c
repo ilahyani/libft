@@ -6,44 +6,13 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/09 18:21:01 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/17 18:30:08 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:57:10 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include <stdlib.h>
 #include "libft.h"
 #include <stdio.h>
-
-static int	frontcheck(char *s1, char const *set);
-
-static int	backcheck(char *s1, char const *set);
-
-char	*ft_strtrim(char const *s1, char const *set)
-{
-	int		i;
-	int		lens1;
-	char	*s2;
-	char	*s1cpy;
-
-	if (!s1)
-		return (0);
-	s1cpy = (char *)s1;
-	s1cpy += frontcheck(s1cpy, set);
-	lens1 = backcheck(s1cpy, set);
-	if (lens1 < 0)
-		return (ft_strdup(""));
-	s2 = (char *) malloc (lens1 + 1);
-	if (!s2)
-		return (0);
-	i = 0;
-	while (lens1--)
-	{
-		s2[i] = s1cpy[i];
-		i++;
-	}
-	s2[i] = '\0';
-	return (s2);
-}
 
 static int	frontcheck(char *s1, char const *set)
 {
@@ -81,4 +50,31 @@ static int	backcheck(char *s1, char const *set)
 		l++;
 	}
 	return (lens1);
+}
+
+char	*ft_strtrim(char const *s1, char const *set)
+{
+	int		i;
+	int		lens1;
+	char	*s2;
+	char	*s1cpy;
+
+	if (!s1)
+		return (0);
+	s1cpy = (char *)s1;
+	s1cpy += frontcheck(s1cpy, set);
+	lens1 = backcheck(s1cpy, set);
+	if (lens1 < 0)
+		return (ft_strdup(""));
+	s2 = (char *) malloc (lens1 + 1);
+	if (!s2)
+		return (0);
+	i = 0;
+	while (lens1--)
+	{
+		s2[i] = s1cpy[i];
+		i++;
+	}
+	s2[i] = '\0';
+	return (s2);
 }

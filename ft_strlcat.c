@@ -6,11 +6,10 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 11:29:49 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/09 11:30:09 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:44:36 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <string.h>
 #include "libft.h"
 
 size_t	ft_strlcat(char *dst, const char *src, size_t dstsize)

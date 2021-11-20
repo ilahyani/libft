@@ -6,7 +6,7 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/02 17:23:43 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/08 12:49:42 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:57:27 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,12 +16,12 @@
 
 void	*ft_memmove(void *dest, const void *src, size_t n)
 {
-	unsigned char		*buffer;
-	unsigned char		*d;
-	size_t				i;
+	char		*buffer;
+	char		*d;
+	size_t		i;
 
-	d = (unsigned char *)dest;
-	buffer = (unsigned char *) src;
+	d = (char *)dest;
+	buffer = (char *) src;
 	if (!d && !buffer)
 		return (0);
 	i = 0;

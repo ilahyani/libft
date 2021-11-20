@@ -6,14 +6,24 @@
 /*   By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/11/13 14:12:19 by ilahyani          #+#    #+#             */
-/*   Updated: 2021/11/14 02:40:44 by ilahyani         ###   ########.fr       */
+/*   Updated: 2021/11/20 11:23:09 by ilahyani         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
 #include "libft.h" 
 
-static char	*strfill(char *str, int i, long long nm, int sign);
+static char	*strfill(char *str, int i, long long nm, int sign)
+{
+	str[i] = '\0';
+	while (i--)
+	{
+		str[i] = (nm % 10) + 48;
+		nm /= 10;
+	}
+	if (sign < 0)
+		str[0] = '-';
+	return (str);
+}
 
 char	*ft_itoa(int n)
 {
@@ -42,17 +52,4 @@ char	*ft_itoa(int n)
 	if (!str)
 		return (0);
 	return (strfill(str, i, nm, sign));
-}
-
-static char	*strfill(char *str, int i, long long nm, int sign)
-{
-	str[i] = '\0';
-	while (i--)
-	{
-		str[i] = (nm % 10) + 48;
-		nm /= 10;
-	}
-	if (sign < 0)
-		str[0] = '-';
-	return (str);
 }
