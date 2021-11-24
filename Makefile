@@ -6,7 +6,7 @@
 #    By: ilahyani <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2021/11/18 19:14:43 by ilahyani          #+#    #+#              #
-#    Updated: 2021/11/20 12:19:42 by ilahyani         ###   ########.fr        #
+#    Updated: 2021/11/21 14:28:31 by ilahyani         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -43,8 +43,7 @@ SRCS        =   ft_isalpha.c\
 				ft_putchar_fd.c\
 				ft_putstr_fd.c\
 				ft_putendl_fd.c\
-				ft_putnbr_fd.c\
-                ft_lstdelone.c
+				ft_putnbr_fd.c
 
 BNS_SRC		=	ft_lstnew.c\
 				ft_lstadd_front.c\
@@ -56,29 +55,33 @@ BNS_SRC		=	ft_lstnew.c\
 				ft_lstiter.c\
 				ft_lstmap.c
 
+HDR = ./libft.h
+
 BNS_OBJS 	=	$(BNS_SRC:.c=.o)
 
 OBJS		= 	$(SRCS:.c=.o)
 
 NAME		= 	libft.a
 
-CC 			=	gcc
+CC 			=	/usr/bin/gcc
 
 CFLAGS		= 	-Wall -Wextra -Werror
 
 BONUS		= 	bonus
 
-RM			= 	rm -f
+RM			= 	/bin/rm -f
 
 $(NAME):	$(OBJS)
-			ar rc $(NAME) $(OBJS)
-			ranlib ${NAME}
+			ar rcs $(NAME) $(OBJS)
 
-all:		${NAME}
 
-$(BONUS):	$(OBJS) $(BNS_OBJS) 
+all:		$(NAME)
+
+$(BONUS):	$(OBJS) $(BNS_OBJS)
 			ar rcs $(NAME) $(OBJS) $(BNS_OBJS)
-			ranlib ${NAME}
+
+%.o: %.c $(HDR)
+	$(CC) $(CFLAGS) -c $< -o $@
 
 clean:
 			$(RM) $(OBJS) $(BNS_OBJS)
